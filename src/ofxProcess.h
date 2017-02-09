@@ -65,6 +65,8 @@ public:
     void write(const std::string &message);
     std::string read() const;
 
+    bool isRunning() const;
+
 private:
     Poco::Process::PID m_PID;
     Poco::Pipe m_PipeOut, m_PipeIn;

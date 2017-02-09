@@ -140,3 +140,8 @@ std::string ofxProcess::read() const
 
     return str;
 }
+
+bool ofxProcess::isRunning() const
+{
+    return Poco::Process::isRunning(m_PID);
+}
