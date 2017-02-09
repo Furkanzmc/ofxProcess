@@ -103,14 +103,14 @@ void ofxProcess::launchDetached()
 
 void ofxProcess::kill()
 {
-    if (Poco::Process::isRunning(m_PID) == false) {
+    if (Poco::Process::isRunning(m_PID)) {
         Poco::Process::kill(m_PID);
     }
 }
 
 void ofxProcess::requestTermination()
 {
-    if (Poco::Process::isRunning(m_PID) == false) {
+    if (Poco::Process::isRunning(m_PID)) {
         Poco::Process::requestTermination(m_PID);
     }
 }
