@@ -62,17 +62,17 @@ Poco::Process::PID ofxProcess::getPID() const
 void ofxProcess::launch()
 {
     if (m_ProcessPath.length() == 0) {
-        ofLogError("ofxIPC", "Process path is empty!");
+        ofLogError("ofxProcess", "Process path is empty!");
         return;
     }
 
     if (m_EnvironmentPath.length() == 0) {
-        ofLogWarning("ofxIPC", "Environment path is empty. Using the current path.");
+        ofLogWarning("ofxProcess", "Environment path is empty. Using the current path.");
         m_EnvironmentPath = Poco::Path::current();
     }
 
     if (Poco::Process::isRunning(m_PID)) {
-        ofLogNotice("ofxIPC", "The process is already running.");
+        ofLogNotice("ofxProcess", "The process is already running.");
         return;
     }
 
@@ -83,17 +83,17 @@ void ofxProcess::launch()
 void ofxProcess::launchDetached()
 {
     if (m_ProcessPath.length() == 0) {
-        ofLogError("ofxIPC", "Process path is empty!");
+        ofLogError("ofxProcess", "Process path is empty!");
         return;
     }
 
     if (m_EnvironmentPath.length() == 0) {
-        ofLogWarning("ofxIPC", "Environment path is empty. Using the current path.");
+        ofLogWarning("ofxProcess", "Environment path is empty. Using the current path.");
         m_EnvironmentPath = Poco::Path::current();
     }
 
     if (Poco::Process::isRunning(m_PID)) {
-        ofLogNotice("ofxIPC", "The process is already running.");
+        ofLogNotice("ofxProcess", "The process is already running.");
         return;
     }
 
@@ -118,7 +118,7 @@ void ofxProcess::requestTermination()
 void ofxProcess::write(const string &message)
 {
     if (Poco::Process::isRunning(m_PID) == false) {
-        ofLogError("ofxIPC", "The process is not running.");
+        ofLogError("ofxProcess", "The process is not running.");
         return;
     }
 
@@ -130,7 +130,7 @@ void ofxProcess::write(const string &message)
 std::string ofxProcess::read() const
 {
     if (Poco::Process::isRunning(m_PID) == false) {
-        ofLogWarning("ofxIPC", "The process is not running. Returning the last output from the process.");
+        ofLogWarning("ofxProcess", "The process is not running. Returning the last output from the process.");
     }
 
     Poco::PipeInputStream istr(m_PipeOut);
