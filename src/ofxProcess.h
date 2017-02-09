@@ -54,9 +54,14 @@ public:
     Poco::Process::PID getPID() const;
 
     void launch();
-    void kill();
-    void requestTermination();
 
+    /**
+     * @brief Starts the process with only the write pipe so that the process doesn't lock the thread.
+     */
+    void launchDetached();
+    void kill();
+
+    void requestTermination();
     void write(const std::string &message);
     std::string read() const;
 

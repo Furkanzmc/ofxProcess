@@ -80,6 +80,27 @@ void ofxProcess::launch()
     m_PID = ph.id();
 }
 
+void ofxProcess::launchDetached()
+{
+    if (m_ProcessPath.length() == 0) {
+        ofLogError("ofxIPC", "Process path is empty!");
+        return;
+    }
+
+    if (m_EnvironmentPath.length() == 0) {
+        ofLogWarning("ofxIPC", "Environment path is empty. Using the current path.");
+        m_EnvironmentPath = Poco::Path::current();
+    }
+
+    if (Poco::Process::isRunning(m_PID)) {
+        ofLogNotice("ofxIPC", "The process is already running.");
+        return;
+    }
+
+    const Poco::ProcessHandle ph = Poco::Process::launch(m_ProcessPath, m_Args, m_EnvironmentPath, &m_PipeIn, nullptr, nullptr);
+    m_PID = ph.id();
+}
+
 void ofxProcess::kill()
 {
     if (Poco::Process::isRunning(m_PID) == false) {
