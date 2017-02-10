@@ -145,3 +145,17 @@ bool ofxProcess::isRunning() const
 {
     return Poco::Process::isRunning(m_PID);
 }
+
+std::string ofxProcess::getProcessInformation() const
+{
+    std::stringstream ss;
+
+    ss << "Process Name: " << m_ProcessPath << "\nArguments: ";
+    for (auto s : m_Args) {
+        ss << s << " ";
+    }
+
+    ss << "\nEnvironment Path: " << m_EnvironmentPath << "\n";
+
+    return ss.str();
+}

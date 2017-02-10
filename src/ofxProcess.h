@@ -67,6 +67,12 @@ public:
 
     bool isRunning() const;
 
+    /**
+     * @brief Returns the process path, its arguments and the environment.
+     * @return
+     */
+    std::string getProcessInformation() const;
+
 private:
     Poco::Process::PID m_PID;
     Poco::Pipe m_PipeOut, m_PipeIn;
