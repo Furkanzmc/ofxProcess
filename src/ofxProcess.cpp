@@ -7,9 +7,9 @@
 #include "Poco/Path.h"
 
 // Logging macros
-#define LOG_ERROR(message) ofLogError("") << __FUNCTION__ << ": " << message
-#define LOG_WARNING(message) ofLogWarning("") << __FUNCTION__ << ": " << message
-#define LOG_NOTICE(message) ofLogNotice("") << __FUNCTION__ << ": " << message
+#define LOG_ERROR(message) ofLogError("") << __FUNCTION__ << ":" << __LINE__ << ": " << message
+#define LOG_WARNING(message) ofLogWarning("") << __FUNCTION__ << ":" << __LINE__ << ": " << message
+#define LOG_NOTICE(message) ofLogNotice("") << __FUNCTION__ << ":" << __LINE__ << ": " << message
 
 ofxProcess::ofxProcess()
     : m_PID()
